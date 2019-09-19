@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <title>URL Shortener</title>
+      <link rel="shortcut icon" href="https://cdn.hyperdev.com/us-east-1%3A52a203ff-088b-420f-81be-45bf559d01b1%2Ffavicon.ico" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <body>
+      <div class="container">
+        <h2>API Project: URL Shortener Microservice</h2>
+   
+        <ol>
+          <li>POST a URL to receive a shortened URL in the JSON response.</li>
+          <li>After passing an invalid URL the JSON response will contain an error in a form of <code>{"error":"invalid URL"}</code>.<br>
+         
+          <li>Visiting the shortened URL <b>[project_url]/api/shorturl/[short URL]</b>  will redirect to the original link.</li>
+        </ol>
+        
+        <h3>Short URL Creation </h3>
+        
+        <form action="api/shorturl/new" method="POST">
+          <label for="url_input">URL to be shortened</label>
+          <input id="url_input" type="text" name="url" value="https://en.wikipedia.org/wiki/Iron_tetraboride">
+          <input type="submit" value="POST URL">
+        </form>
+        
+      </div>
+      
+   </body>
+
+
+</html>
