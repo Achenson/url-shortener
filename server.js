@@ -10,6 +10,10 @@ var cors = require("cors");
 var app = express();
 var opn = require("opn");
 
+var dotenv = require('dotenv')
+
+
+
 app.use(cors());
 
 /** this project needs to parse POST bodies **/
@@ -19,8 +23,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/public", express.static(process.cwd() + "/public"));
 
-const MONGOLAB_URI =
-  "mongodb+srv://Achenson:dsf3Z1IKO1GCEZtv@mongo-for-fcc-13gh5.mongodb.net/test?retryWrites=true&w=majority";
+dotenv.config();
+
+const MONGOLAB_URI = process.env.MONGOLAB_URI;
+  
 // Basic Configuration
 //var port = process.env.PORT || 3000;
 var port = 3000;
@@ -72,7 +78,7 @@ app.post("/api/shorturl/new", function(req, res, next) {
       if (err) return next(err);
 
       if (post.length) {
-        res.send({ error: "URI already present in the database" });
+        res.send({ original_url: post[0].long, short_url: post[0].short });
       } else {
         let newShort = 1;
         let newShortToString = "notThis";
